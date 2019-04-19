@@ -27,6 +27,8 @@ $ git clone https://github.com/cuishuaigit/k8s-kong.git
 $ helm install -n kong-ingress --tiller-namespace [namesapce]  -f k8s-kong/values.yaml k8s-kong/
 ```
 
+This a demo deploy [ingress](https://github.com/Kong/kubernetes-ingress-controller/blob/master/docs/deployment/minikube.md)
+![](https://github.com/cuishuaigit/k8s-kong/blob/master/image/konga.jpg<Paste>)
 > **Tip**: List all releases using `helm list`
 
 ## Uninstalling the Chart
@@ -190,4 +192,4 @@ You can can learn about kong ingress custom resource definitions here:
 ## Reference
 
 - [https://github.com/pantsel/konga]()
-- [https://www.cnblogs.com/cuishuai/p/9378960.html]()
+- ![] (https://www.cnblogs.com/cuishuai/p/9378960.html)
