@@ -37,9 +37,13 @@ To uninstall/delete the `kong-ingress` deployment:
 $ helm delete kong-ingress
 $ kubectl get pvc | grep kong-ingress-postgresql | awk '{print $1}'| xargs kubectl delete pvc 
 ```
-
 The command removes all the Kubernetes components associated with the
 chart and deletes the release.
+
+## konga 
+
+Konga is a UI for kong, but i dont't add it in this chart,because it deploy have a probelom,
+so i deploy [konga](https://www.cnblogs.com/cuishuai/p/9378960.html) on a Physical machine
 
 ## Configuration
 
@@ -181,3 +185,8 @@ You can can learn about kong ingress custom resource definitions here:
 | readinessProbe   | Kong ingress controllers readiness probe    |                                                                              |
 | livenessProbe    | Kong ingress controllers liveness probe     |                                                                              |
 | ingressClass     | The ingress-class value for controller      | nginx
+
+
+## Reference
+
+- [https://github.com/pantsel/konga]()
