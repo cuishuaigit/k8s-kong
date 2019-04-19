@@ -3,12 +3,6 @@
 [Kong](https://KongHQ.com/) is an open-source API Gateway and Microservices
 Management Layer, delivering high performance and reliability.
 
-## TL;DR;
-
-```bash
-$ helm install stable/kong
-```
-
 ## Introduction
 
 This chart bootstraps all the components needed to run Kong on a [Kubernetes](http://kubernetes.io)
@@ -16,26 +10,32 @@ cluster using the [Helm](https://helm.sh) package manager.
 
 ## Prerequisites
 
-- Kubernetes 1.8+ with Beta APIs enabled.
+- Kubernetes 1.13.2+ APIs enabled.
 - PV provisioner support in the underlying infrastructure if persistence
   is needed for Kong datastore.
+- visit my github about how to use [nfs](https://github.com/cuishuaigit/k8s-monitor) as a pv provider
 
 ## Installing the Chart
 
-To install the chart with the release name `my-release`:
+To install the chart with the release name `kong-ingress`:
+First: you must get the chat of [kong-ingress](https://github.com/cuishuaigit/k8s-kong.git);
+Second: edit the values.yaml for yourself,as default don't use kong-admin API with https,(nodeport 32344),
+	proxy http (nodeport 32380) https (nodeport 32343)
 
 ```bash
-$ helm install --name my-release stable/kong
+$ git clone https://github.com/cuishuaigit/k8s-kong.git 
+$ helm install -n kong-ingress --tiller-namespace [namesapce]  -f k8s-kong/values.yaml k8s-kong/
 ```
 
 > **Tip**: List all releases using `helm list`
 
 ## Uninstalling the Chart
 
-To uninstall/delete the `my-release` deployment:
+To uninstall/delete the `kong-ingress` deployment:
 
 ```bash
-$ helm delete my-release
+$ helm delete kong-ingress
+$ kubectl get pvc | grep kong-ingress-postgresql | awk '{print $1}'| xargs kubectl delete pvc 
 ```
 
 The command removes all the Kubernetes components associated with the
@@ -142,39 +142,6 @@ Postgres is enabled by default.
 | env.cassandra_repl_factor         | Replication factor for the Kong keyspace                               | `2`                   |
 
 
-All `kong.env` parameters can also accept a mapping instead of a value to ensure the parameters can be set through configmaps and secrets.
-
-An example :
-
-```yaml
-kong:
-  env:
-     pg_user: kong
-     pg_password:
-       valueFrom:
-         secretKeyRef:
-            key: kong
-            name: postgres
-```
- 
-
-For complete list of Kong configurations please check https://getkong.org/docs/latest/configuration/.
-
-Specify each parameter using the `--set key=value[,key=value]` argument to `helm install`. For example,
-
-```console
-$ helm install stable/kong --name my-release \
-  --set=image.tag=1.1,env.database=cassandra,cassandra.enabled=true
-```
-
-Alternatively, a YAML file that specifies the values for the above parameters
-can be provided while installing the chart. For example,
-
-```console
-$ helm install stable/kong --name my-release -f values.yaml
-```
-
-> **Tip**: You can use the default [values.yaml](values.yaml)
 
 ### Kong Ingress Controller
 
@@ -185,9 +152,7 @@ for Kong specific configuration.
 To deploy the ingress controller together with
 kong run the following command:
 
-```bash
-helm install stable/kong --set ingressController.enabled=true
-```
+default ingress is enabled.
 
 **Note**: Kong Ingress controller doesn't support custom SSL certificates
 on Admin port. We will be removing this limitation in the future.
