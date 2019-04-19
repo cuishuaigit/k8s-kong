@@ -18,7 +18,7 @@ cluster using the [Helm](https://helm.sh) package manager.
 ## Installing the Chart
 
 To install the chart with the release name `kong-ingress`:
-First: you must get the chat of [kong-ingress](https://github.com/cuishuaigit/k8s-kong.git);
+First: you must get the chart of [kong-ingress](https://github.com/cuishuaigit/k8s-kong.git);
 Second: edit the values.yaml for yourself,as default don't use kong-admin API with https,(nodeport 32344),
 	proxy http (nodeport 32380) https (nodeport 32343)
 
