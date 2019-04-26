@@ -1,0 +1,7 @@
+apiVersion: configuration.konghq.com/v1
+kind: KongConsumer
+metadata:
+  name: demo-user
+  namespace: default
+username: demo-ingress
+custom_id: demo-ingress-001

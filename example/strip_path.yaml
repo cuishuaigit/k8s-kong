@@ -1,0 +1,7 @@
+apiVersion: configuration.konghq.com/v1
+kind: KongIngress
+metadata:
+  name: strip-path
+  namespace: istio-system
+route:
+  strip_path: false

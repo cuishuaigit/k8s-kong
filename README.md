@@ -26,7 +26,12 @@ Second: edit the values.yaml for yourself,as default don't use kong-admin API wi
 $ git clone https://github.com/cuishuaigit/k8s-kong.git 
 $ helm install -n kong-ingress --tiller-namespace [namesapce]  -f k8s-kong/values.yaml k8s-kong/
 ```
+In 0.4.0,strip_path default is true,if you have some service need the uri path,you can extend ingress with KongIngress to set it false.
 
+```bash
+$ kubectl create -f k8s-kong/kongingress-strip-path.yaml
+
+```
 This a [Demo](https://github.com/Kong/kubernetes-ingress-controller/blob/master/docs/deployment/minikube.md)
 ![](https://github.com/cuishuaigit/k8s-kong/blob/master/image/konga.jpg)
 

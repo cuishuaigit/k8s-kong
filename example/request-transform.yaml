@@ -1,0 +1,16 @@
+apiVersion: configuration.konghq.com/v1
+kind: KongPlugin
+metadata:
+  name: transform-request-to-dummy
+  namespace: istio-system
+  labels:
+    global: "false"
+disable: false
+config:
+  replace:
+    headers:
+      - 'host:llll'
+  add:
+    headers:
+      - "x-myheader:my-header-value"
+plugin: request-transformer

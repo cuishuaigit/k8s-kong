@@ -1,0 +1,12 @@
+apiVersion: configuration.konghq.com/v1
+kind: KongPlugin
+metadata:
+  name: echo-file-log
+  namespace: istio-system
+  labels:
+    global: "false"
+disable: false
+plugin: file-log
+config:
+  path: /tmp/req.log
+  reopen: true

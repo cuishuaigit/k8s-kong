@@ -1,0 +1,17 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: kiali
+  namespace: istio-system
+  annotations:
+    plugins.konghq.com: transform-request-to-dummy,echo-file-log
+    configuration.konghq.com: strip-path
+spec:
+  rules:
+  - host: kiali.k8s.qing.com
+    http:
+      paths:
+      - path: /kiali
+        backend:
+          serviceName: kiali
+          servicePort: 20001
