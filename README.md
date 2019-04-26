@@ -184,7 +184,7 @@ You can can learn about kong ingress custom resource definitions here:
 | enabled          | Deploy the ingress controller, rbac and crd | false                                                                        |
 | replicaCount     | Number of desired ingress controllers       | 1                                                                            |
 | image.repository | Docker image with the ingress controller    | kong-docker-kubernetes-ingress-controller.bintray.io/kong-ingress-controller |
-| image.tag        | Version of the ingress controller           | 0.2.0                                                                        |
+| image.tag        | Version of the ingress controller           | 0.4.0                                                                        |
 | readinessProbe   | Kong ingress controllers readiness probe    |                                                                              |
 | livenessProbe    | Kong ingress controllers liveness probe     |                                                                              |
 | ingressClass     | The ingress-class value for controller      | nginx
