@@ -175,7 +175,7 @@ ingressController:
   enabled: true
   image:
     repository: kong-docker-kubernetes-ingress-controller.bintray.io/kong-ingress-controller
-    tag: 0.3.0
+    tag: 0.4.0
   replicaCount: 1
   livenessProbe:
     failureThreshold: 3

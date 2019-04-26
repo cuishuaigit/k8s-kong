@@ -109,7 +109,7 @@ spec:
         args:
         - /kong-ingress-controller
         # the default service is the kong proxy service
-        - --default-backend-service={{ .Release.Namespace }}/{{ template "kong.fullname" . }}-proxy
+        # - --default-backend-service={{ .Release.Namespace }}/{{ template "kong.fullname" . }}-proxy
         # Service from were we extract the IP address/es to use in Ingress status
         - --publish-service={{ .Release.Namespace }}/{{ template "kong.fullname" . }}-proxy
         # Set the ingress class
